@@ -6,6 +6,7 @@
         </classes>
     </test>
 
+
     <test name = "SimpleTest">
         <classes>
             <class name="SimpleTest"/>
@@ -13,6 +14,12 @@
     </test>
 
     <test name = "SimpleTest_Conflict">
+        <classes>
+            <class name="SimpleTest"/>
+        </classes>
+    </test>
+
+    <test name = "SimpleTest_Conflict3">
         <classes>
             <class name="SimpleTest"/>
         </classes>
