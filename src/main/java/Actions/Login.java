@@ -12,6 +12,22 @@ public class Login {
     }
 
     public void clickRegisterButton(){
-        element.registerButton().click();;
+        element.registerButton().click();
+    }
+
+    public String getLoginText(){
+        return element.loginText().getText();
+    }
+
+    public void setEmail(String email){
+        element.userEmail().sendKeys(email);
+    }
+
+    public void setPassword(String password){
+        element.userPassword().sendKeys(password);
+    }
+
+    public void pressLogin(){
+        element.submitButton().click();
     }
 }

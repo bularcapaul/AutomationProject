@@ -27,4 +27,8 @@ public class LoginElements {
     public WebElement submitButton(){
         return driver.findElement(By.cssSelector("#submitButton"));
     }
+
+    public WebElement loginText(){
+        return driver.findElement(By.cssSelector("h2.loginPageID"));
+    }
 }
