@@ -8,9 +8,8 @@ public class ReportManager {
     private static ExtentReports extentReports;
 
     public static ExtentReports getInstance(){
-
         if(extentReports == null){
-            String reportName = "test-report.html";
+            String reportName = "ExtentReports.html";
             ExtentSparkReporter sparkReporter = new ExtentSparkReporter(reportName);
             extentReports = new ExtentReports();
             extentReports.attachReporter(sparkReporter);

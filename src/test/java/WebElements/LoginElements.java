@@ -28,7 +28,7 @@ public class LoginElements {
         return driver.findElement(By.cssSelector("#submitButton"));
     }
 
-    public WebElement loginText(){
-        return driver.findElement(By.cssSelector("h2.loginPageID"));
+    public WebElement errorForbiddenAccess(){
+        return driver.findElement(By.cssSelector("#errorForbiddenAccess"));
     }
 }

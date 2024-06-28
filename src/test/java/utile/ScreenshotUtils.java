@@ -18,20 +18,24 @@ public class ScreenshotUtils {
         this.driver = driverFromBaseTestClass;
     }
 
-    public void captureAndSaveScreenshots(String testName){
-
+    public String captureAndSaveScreenshots(String testName){
+        String screenshotPath = null;
         try {
             File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
             String screenshotName = testName + "_" + timeStamp + ".png";
             String screenshotDirectory = "Screenshots";
 
+            new File(screenshotDirectory).mkdirs();
             File targetFile = new File(screenshotDirectory, screenshotName);
             FileUtils.copyFile(screenshotFile, targetFile);
 
-            System.out.println("Screenshot saved to: " + targetFile.getAbsolutePath());
+            screenshotPath = targetFile.getAbsolutePath();
+            System.out.println("Screenshot saved to: " + screenshotPath);
         }catch(IOException exception){
             exception.printStackTrace();
         }
+
+        return  screenshotPath;
     }
 }
