@@ -30,7 +30,7 @@ public class LoginTrainer extends BaseTest {
         dashboard = new Dashboard(driver);
         register = new Register(driver);
 
-        ConfigLoader configLoader = new ConfigLoader("src/test/resources/proprietati/dateUser1.properties");
+        ConfigLoader configLoader = new ConfigLoader("src/test/resources/proprietati/dateUserBularcaPaul.properties");
         String email = configLoader.getProperty("email");
         String password = configLoader.getProperty("password");
 
@@ -40,9 +40,12 @@ public class LoginTrainer extends BaseTest {
 
         if (login.errorForbiddenAccessText()){
             login.clickRegisterButton();
-            register.registerUser(true);
+            register.registerUser(true, null, null, null);
+
         }
 
         Assert.assertTrue(dashboard.getUserEmailFromDashBoard().equalsIgnoreCase(email));
+
+
     }
 }

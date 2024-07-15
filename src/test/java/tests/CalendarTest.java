@@ -5,31 +5,23 @@ import Actions.Login;
 import Actions.Register;
 import Actions.Training;
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import utile.BaseTest;
 import utile.ConfigLoader;
 
-public class TrainingProgram extends BaseTest {
+public class CalendarTest extends BaseTest {
 
     private Login login = null;
     private Dashboard dashboard = null;
     private Register register = null;
     private String email = "";
     private String password = "";
-
-
-
-    @BeforeTest
-    public void setup(){
-
-
-    }
+    private String eventText = "";
 
     @Test
-    public void openTrainingTab(){
+    public void openDashboard(){
 
-        initTest("Training program");
+        initTest("Calendar Test");
 
         login = new Login(driver);
         dashboard = new Dashboard(driver);
@@ -38,25 +30,21 @@ public class TrainingProgram extends BaseTest {
         Training training = new Training(driver);
 
         ConfigLoader configLoader = new ConfigLoader("src/test/resources/proprietati/dateUserBularcaPaul.properties");
-        ConfigLoader configLoader1 = new ConfigLoader("src/test/resources/proprietati/DatePentruAntrenament.properties");
+        ConfigLoader configLoaderDate = new ConfigLoader("src/test/resources/proprietati/dateData.properties");
 
-         email = configLoader.getProperty("email");
-         password = configLoader.getProperty("password");
+
+        email = configLoader.getProperty("email");
+        password = configLoader.getProperty("password");
+        eventText = configLoaderDate.getProperty(eventText);
 
         login();
 
-        training.clickOnTrainingPageLink();
+        dashboard.clickSpecificDay(configLoaderDate.getProperty("date"));
 
-        training.clickGenerateProgramButton();
+        dashboard.sendEventText(eventText);
+        dashboard.clickCreateEventButton();
 
-
-        training.dragAndDropTrainingProgram(configLoader1.getProperty("weekDay"),
-                configLoader1.getProperty("trainingProgram"));
-
-        Assert.assertTrue(training.trainingProgramOnWeekday(configLoader1.getProperty("weekDay"), "legs").
-                equalsIgnoreCase("legs"));
-
-
+        Assert.assertTrue(dashboard.isEventPresent(eventText));
 
     }
 
@@ -80,3 +68,4 @@ public class TrainingProgram extends BaseTest {
         login.pressLoginButton();
     }
 }
+

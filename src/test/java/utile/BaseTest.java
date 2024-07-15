@@ -15,8 +15,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 
 
-import java.io.File;
-
 public class BaseTest {
 
     public WebDriver driver;
@@ -30,6 +28,7 @@ public class BaseTest {
         String loginUrl = configLoader.getProperty("loginUrl");
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
         screenshotUtils = new ScreenshotUtils(driver);
         driver.get(loginUrl);
 

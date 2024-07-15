@@ -15,7 +15,7 @@ public class Register {
 
     public Register(WebDriver driver){
         elements = new RegisterElements(driver);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(4));
     }
 
     public String getSignUpText(){
@@ -59,15 +59,15 @@ public class Register {
         elements.submit().click();
     }
 
-    public void registerUser( boolean isTrainer) {
+    public void registerUser(boolean isTrainer, String email, String password, String phoneNumber) {
 
-        ConfigLoader configLoader = new ConfigLoader("src/test/resources/proprietati/dateUser1.properties");
+        ConfigLoader configLoader = new ConfigLoader("src/test/resources/proprietati/dateUserBularcaPaul.properties");
         String firstName = configLoader.getProperty("firstName");
         String lastName = configLoader.getProperty("lastName");
-        String phoneNumber = configLoader.getProperty("phoneNumber");
-        String email = configLoader.getProperty("email");
+//        String phoneNumber = configLoader.getProperty("phoneNumber");
+//        String email = configLoader.getProperty("email");
         String city = configLoader.getProperty("city");
-        String password = configLoader.getProperty("password");
+//        String password = configLoader.getProperty("password");
 
         setFirstname(firstName);
         setLastname(lastName);
