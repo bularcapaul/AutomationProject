@@ -14,7 +14,7 @@ public class Login {
 
     public Login(WebDriver driver){
         this.element = new LoginElements(driver);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(4));
 
     }
 
@@ -23,6 +23,7 @@ public class Login {
     }
 
     public void enterEmail(String email){
+        wait.until(d -> element.userEmail().isDisplayed());
         element.userEmail().sendKeys(email);
     }
 

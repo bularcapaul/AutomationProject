@@ -18,9 +18,21 @@
 <!--        </classes>-->
 <!--    </test>-->
 
-    <test name = "Login Trainer">
+<!--    <test name = "Training Program">-->
+<!--        <classes>-->
+<!--            <class name="tests.TrainingProgram"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+<!--    <test name = "Calendar Test">-->
+<!--        <classes>-->
+<!--            <class name="tests.CalendarTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+    <test name = "Cucumber Calendar Test">
         <classes>
-            <class name="tests.TrainingProgram"/>
+            <class name="runner.TestRunner"/>
         </classes>
     </test>
 </suite>
